@@ -18,6 +18,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post.find(params[:id]).destroy
+    Post.find(params[:id]).destroy
   end
 end
