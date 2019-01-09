@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  belongs_to :post
+  
   def index
     render json: Comment.all
   end

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  has_many :comments
+  
   def index
     render json: Post.all
   end
