@@ -10,14 +10,14 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(post_params)
-    if vehicle.save
-      render json: vehicle
+    if post.save
+      render json: post
     else
-      render json: vehicle.errors, status: 422
+      render json: post.errors, status: 422
     end
   end
 
   def destroy
-    @post.destroy
+    post.find(params[:id]).destroy
   end
 end
