@@ -6,14 +6,15 @@ require 'faker'
     email: Faker::Internet.email,
     password: "password"
   )
-end
+
 
   20.times do
     Post.create(
-      author: Faker::Movies::StarWars.character,
-      body: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote
+      body: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote,
+      user_id: u.id
     )
   end
+end
     
   40.times do
     Comment.create(
@@ -21,3 +22,4 @@ end
       body: Faker::Movies::StarWars.quote
     )
   end
+
