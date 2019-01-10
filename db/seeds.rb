@@ -7,3 +7,17 @@ require 'faker'
     password: "password"
   )
 end
+
+  20.times do
+    Post.create(
+      author: Faker::Movies::StarWars.character,
+      body: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote
+    )
+  end
+    
+  40.times do
+    Comment.create(
+      author: Faker::Movies::StarWars.character,
+      body: Faker::Movies::StarWars.quote
+    )
+  end
