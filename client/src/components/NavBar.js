@@ -3,6 +3,7 @@ import { Menu } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../reducers/user';
+import styled from 'styled-components';
 
 class NavBar extends Component {
   rightNavs = () => {
@@ -33,7 +34,7 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <Menu pointing secondary>
+        <Menu as={Background} pointing secondary fixed='top'>
           <Link to="/">
             <Menu.Item name="home" />
           </Link>
@@ -47,6 +48,15 @@ class NavBar extends Component {
 const mapStateToProps = state => {
   return { user: state.user };
 };
+
+const Background = styled.div`
+background: #07FFA8 !important;
+padding-bottom: 1.5rem;
+padding-top: 1.5rem;
+display: flex;
+flex-direction: row;
+align-items: center;
+`
 
 export default withRouter(connect(mapStateToProps)(NavBar));
 
