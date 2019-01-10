@@ -5,7 +5,7 @@ class Home extends Component {
   render() {
     return (
       <>
-      <Header as="h1" textAlign="center">Mugshot App</Header>
+      <h1 style={{ margin: '100px', padding: '10px', position: 'fixed'}}>Mugshot App</h1>
       </>
     );
   }

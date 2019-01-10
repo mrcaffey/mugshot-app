@@ -58,5 +58,10 @@ flex-direction: row;
 align-items: center;
 `
 
+const MenuItem = styled.div`
+font-family: 'Balthazar', serif;
+font-size: 30px !important;
+`
+
 export default withRouter(connect(mapStateToProps)(NavBar));
 
