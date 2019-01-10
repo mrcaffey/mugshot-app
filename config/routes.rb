@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   get 'posts/show'
   get 'posts/new'
   get 'posts/destroy'
-  get 'users/index'
-  get 'users/show'
-  get 'users/new'
+  resources :users, only: [:index, :update]
   mount_devise_token_auth_for 'User', at: 'api/auth'
   namespace :api do
     #API ROUTES SHOULD GO HERE
