@@ -21,8 +21,8 @@ class Users extends React.Component {
         return(
           <Table.Body>
             <Table.Row verticalAlign="middle" key={u.id}>
-              <Table.Cell>{u.first_name}{" "}{u.last_name}</Table.Cell>
-              <Table.Cell>{u.phone}</Table.Cell>
+              <Table.Cell>{u.name}</Table.Cell>
+              <Table.Cell>{'u.phone'}</Table.Cell>
               <Table.Cell>{u.email}</Table.Cell>
             </Table.Row>
           </Table.Body>

@@ -3,7 +3,7 @@ const USERS = 'USERS';
 
 export const getUsers = () => {
   return (dispatch) => {
-    axios.get('/users')
+    axios.get('/api/users')
       .then( res => {
         dispatch({ type: USERS, users: res.data })
       })
