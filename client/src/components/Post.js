@@ -40,8 +40,7 @@ class Post extends React.Component {
               <Feed.Label image='/images/avatar/small/joe.jpg' />
               <Feed.Content>
                 <Feed.Summary>
-                  <a>Joe Henderson</a> posted on his page
-                  <Feed.Date>3 days ago</Feed.Date>
+                  <a>Should be user making post here</a> posted on his page
                 </Feed.Summary>
                 <Feed.Extra text>
                   {post.body}
@@ -62,11 +61,8 @@ class Post extends React.Component {
           <Sticky>
             <Card>
               <Card.Content>
-                <Card.Header>Matthew</Card.Header>
-                <Card.Meta>
-                  <span className='date'>Joined in 2015</span>
-                </Card.Meta>
-                <Card.Description>Matthew is a musician living in Nashville.</Card.Description>
+                <Card.Header>Should be current user here</Card.Header>
+                <Card.Description>User</Card.Description>
               </Card.Content>
               <Card.Content extra>
                 <a>
