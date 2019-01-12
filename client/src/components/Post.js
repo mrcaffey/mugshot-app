@@ -44,18 +44,8 @@ class Post extends React.Component {
                   <Feed.Date>3 days ago</Feed.Date>
                 </Feed.Summary>
                 <Feed.Extra text>
-                  {post.text}
+                  {post.body}
                 </Feed.Extra>
-                <Feed.Meta>
-                  <Feed.Like>
-                    <Icon name='thumbs up' />
-                    {post.likes}
-                  </Feed.Like>
-                  <Feed.Like>
-                    <Icon name='thumbs down' />
-                    {post.dislikes}
-                  </Feed.Like>
-                </Feed.Meta>
               </Feed.Content>
             </Feed.Event>
         </Segment>
