@@ -14,21 +14,18 @@ class Users extends React.Component {
 
   displayUsers = () => {
     const { users } = this.props
-
-    return (
-       users.map( u => {
-         return(
+      
+        return( 
+          {users.map( u => {
           <Table.Body>
             <Table.Row verticalAlign="middle" key={u.id}>
-              <Table.Cell>{u.name}</Table.Cell>
-              <Table.Cell>{'u.phone'}</Table.Cell>
+              <Table.Cell>{u.first_name}{" "}{u.last_name}</Table.Cell>
+              <Table.Cell>{u.phone}</Table.Cell>
               <Table.Cell>{u.email}</Table.Cell>
             </Table.Row>
           </Table.Body>
-      )
-    })
-  )
-}
+          })})
+  }
 
   render(){
     return (
