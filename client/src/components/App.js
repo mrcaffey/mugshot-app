@@ -23,8 +23,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <AuthRoute exact path="/login" component={Login} />
             <AuthRoute exact path="/register" component={Register} />
-            <AuthRoute exact path="/user" component={User} />
-            <Route exact path="/user" component={User} />
+            <Route exact path="/users" component={Users} />
             <Route exact paath="/post" component={Post} />
             <Route component={NoMatch} />
           </Switch>
