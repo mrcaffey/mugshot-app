@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import user from './user';
+import users from './users';
 import flash from './flash';
 
 const rootReducer = combineReducers({
   user,
-  flash,
+  users,
+  flash
 });
 
 export default rootReducer;

@@ -13,7 +13,6 @@ class Users extends React.Component {
   }
 
   displayUsers = () => {
-    const { name, phone, id, email} = this.state
     const { users } = this.props
 
     return(
