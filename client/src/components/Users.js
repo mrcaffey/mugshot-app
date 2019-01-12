@@ -4,7 +4,7 @@ import {Menu,Grid, Table, Container } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { getUsers } from '../reducers/users'
 
-class User extends React.Component {
+class Users extends React.Component {
   state = {users: []}
 
   componentDidMount(){
@@ -62,4 +62,4 @@ const mapStateToProps = (state) => {
   return { users: state.users };
 }
 
-export default connect(mapStateToProps)(User)
+export default connect(mapStateToProps)(Users)

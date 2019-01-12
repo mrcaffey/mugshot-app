@@ -9,7 +9,7 @@ import Home from './Home';
 import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
-import User from './User';
+import Users from './Users';
 import Post from './Post';
 
 class App extends Component {
