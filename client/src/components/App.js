@@ -15,7 +15,7 @@ import Post from './Post';
 class App extends Component {
   render() {
     return (
-      <div>
+      <>
         <NavBar />
         <Flash />
         <FetchUser>
@@ -28,7 +28,7 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
-      </div>
+      </>
     );
   }
 }
