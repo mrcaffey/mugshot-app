@@ -11,6 +11,8 @@ require 'faker'
   20.times do
     Post.create(
       body: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote,
+      likes: Faker::Number.number(2),
+      dislikes: Faker::Number.number(2),
       user_id: u.id
     )
   end

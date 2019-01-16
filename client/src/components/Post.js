@@ -29,6 +29,32 @@ class Post extends React.Component {
     })
   }
 
+  addLike = (post, likes) => {
+    const like = likes + 1;
+    axios.put(`/api/posts/${post}`, {
+      likes: like
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    })    
+  }
+
+  addDislike = (post, dislikes) => {
+    const dislike = dislikes + 1;
+    axios.put(`/api/posts/${post}`, {
+      dislikes: dislike
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    })    
+  }
+
   displayPosts = () => {
     const user = {}
     return this.state.posts.map(post => {
@@ -45,6 +71,16 @@ class Post extends React.Component {
                 <Feed.Extra text>
                   {post.body}
                 </Feed.Extra>
+                <Feed.Meta>
+                  <Feed.Like>
+                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)} />                     
+                    {post.likes}
+                  </Feed.Like>
+                  <Feed.Like>
+                    <Icon name='thumbs down' onClick={() => this.addDislike(post.id, post.dislikes)}/>
+                    {post.dislikes}
+                  </Feed.Like>
+                  </Feed.Meta>
               </Feed.Content>
             </Feed.Event>
         </Segment>
