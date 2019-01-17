@@ -19,6 +19,9 @@ class NavBar extends Component {
           <Link to="/post">
           <Menu.Item name="Posts" />
         </Link>
+        <Link to="/users">
+          <Menu.Item name="Users" />
+        </Link>
         </Menu.Menu>
       );
     }

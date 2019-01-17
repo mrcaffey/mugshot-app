@@ -16,13 +16,15 @@ import users from '../reducers/users';
 class Post extends React.Component {
 
   state = {
-    posts: []
+    posts: [],
+    users: [],
   }
 
   componentDidMount() {
-    axios.get('/api/posts')
+    axios.get('/api/posts/')
       .then( ({ data: posts }) => this.setState({ posts }) )
   }
+
 
   newPost = (post) => {
     this.setState({
@@ -56,18 +58,26 @@ class Post extends React.Component {
     })    
   }
 
+//   displayUser = () => {
+//     let user = {}
+//     return this.state.posts.map(post => {
+//       axios.get(`api/users/${post.user_id}`)
+//         .then(res => user = res)
+//         return (
+//           <p>{user.name}</p>
+//         )
+//   }
+// }
+
   displayPosts = () => {
-    let user = {}
     return this.state.posts.map(post => {
-        axios.get(`api/users/${post.user_id}`)
-          .then(res => user = res)
         return(
         <Segment>
              <Feed.Event>
               <Feed.Label/>
               <Feed.Content>
                 <Feed.Summary>
-                  <p>{user.name}</p> posted on his page
+                  {/* {this.displayUser()} */}
                 </Feed.Summary>
                 <Feed.Extra text>
                   {post.body}
