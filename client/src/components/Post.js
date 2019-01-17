@@ -56,17 +56,17 @@ class Post extends React.Component {
   }
 
   displayPosts = () => {
-    const user = {}
+    let user = {}
     return this.state.posts.map(post => {
-        axios.get(`api/user/${post.user_id}`)
+        axios.get(`api/users/${post.user_id}`)
           .then(res => user = res)
         return(
         <Segment>
              <Feed.Event>
-              <Feed.Label image='/images/avatar/small/joe.jpg' />
+              <Feed.Label/>
               <Feed.Content>
                 <Feed.Summary>
-                  <a>Should be user making post here</a> posted on his page
+                  <p>{user.name}</p> posted on his page
                 </Feed.Summary>
                 <Feed.Extra text>
                   {post.body}
