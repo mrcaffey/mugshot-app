@@ -11,6 +11,7 @@ import {
 } from 'semantic-ui-react';
 import axios from 'axios';
 import FeedPost from './FeedPost';
+import users from '../reducers/users';
 
 class Post extends React.Component {
 
