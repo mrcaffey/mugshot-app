@@ -111,10 +111,6 @@ class Post extends React.Component {
                 <Card.Description>User</Card.Description>
               </Card.Content>
               <Card.Content extra>
-                <a>
-                  <Icon name='user' />
-                  22 Friends
-                </a>
               </Card.Content>
             </Card>
           </Sticky>
