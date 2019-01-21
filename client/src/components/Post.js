@@ -39,6 +39,7 @@ class Post extends React.Component {
     .then(response => {
       console.log(response);
       this.forceUpdate()
+      this.setState({ state: this.state })
     })
     .catch(error => {
       console.log(error);
@@ -53,6 +54,7 @@ class Post extends React.Component {
     .then(response => {
       console.log(response);
       this.forceUpdate()
+      this.setState({ state: this.state })
     })
     .catch(error => {
       console.log(error);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { Header } from 'semantic-ui-react';
-import Mugshot0 from '../Images/Mugshot0.jpg';
 import Mugshot1 from '../Images/Mugshot1.jpeg'
 import Mugshot2 from '../Images/Mugshot2.jpeg';
 import Mugshot3 from '../Images/Mugshot3.jpeg';
@@ -14,7 +13,6 @@ class Home extends Component {
       <Loop src={Mugshot2} alt="mugshot"/>,
       <Loop src={Mugshot1} alt="mugshot"/>,
       <Loop src={Mugshot3} alt="mugshot"/>,
-      <Loop src={Mugshot0} alt="mugshot"/>,
   ],
    }
 
