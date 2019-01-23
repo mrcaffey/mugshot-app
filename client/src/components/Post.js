@@ -57,17 +57,6 @@ class Post extends React.Component {
     })    
   }
 
-//   displayUser = () => {
-//     let user = {}
-//     return this.state.posts.map(post => {
-//       axios.get(`api/users/${post.user_id}`)
-//         .then(res => user = res)
-//         return (
-//           <p>{user.name}</p>
-//         )
-//   }
-// }
-
   displayPosts = () => {
     return this.state.posts.map(post => {
         return(
