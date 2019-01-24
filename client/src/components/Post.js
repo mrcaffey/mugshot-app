@@ -58,17 +58,6 @@ class Post extends React.Component {
     })    
   }
 
-//   displayUser = () => {
-//     let user = {}
-//     return this.state.posts.map(post => {
-//       axios.get(`api/users/${post.user_id}`)
-//         .then(res => user = res)
-//         return (
-//           <p>{user.name}</p>
-//         )
-//   }
-// }
-
   displayPosts = () => {
     return this.state.posts.map(post => {
         return(
@@ -112,10 +101,6 @@ class Post extends React.Component {
                 <Card.Description>User</Card.Description>
               </Card.Content>
               <Card.Content extra>
-                <a>
-                  <Icon name='user' />
-                  22 Friends
-                </a>
               </Card.Content>
             </Card>
           </Sticky>
