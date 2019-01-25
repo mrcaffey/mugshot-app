@@ -58,6 +58,18 @@ class Post extends React.Component {
     })    
   }
 
+  setNewLike = like => {
+    this.updatePost({like}).then(res => {
+      this.refreshPost(res)
+      this.refreshLike();
+    })
+  }
+
+  refreshLikes = res => this.setState({ shoes: res.data.shoes })
+
+  refreshLike = () =>
+    this.setState({refreshLike: !this.state.refreshLike})
+
   displayPosts = () => {
     return this.state.posts.map(post => {
         return(
@@ -73,7 +85,7 @@ class Post extends React.Component {
                 </Feed.Extra>
                 <Feed.Meta>
                   <Feed.Like>
-                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)} />                     
+                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)}  />                     
                     {post.likes}
                   </Feed.Like>
                   <Feed.Like>
