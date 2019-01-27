@@ -22,7 +22,7 @@ class Register extends Component {
   }
 
   render() {
-    const { email, password, passwordConfirmation } = this.state;
+    const { email, password, passwordConfirmation, } = this.state;
 
     return (
       <Segment basic>
@@ -50,7 +50,7 @@ class Register extends Component {
               required
               value={userName}
               onChange={this.handleChange}
-            /> 
+            />  
           </Form.Field> */}
           <Form.Field>
             <label htmlFor="password">Password</label>
