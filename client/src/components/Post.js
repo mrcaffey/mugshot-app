@@ -23,8 +23,8 @@ class Post extends React.Component {
   componentDidMount() {
     axios.get('/api/posts/')
       .then( ({ data: posts }) => this.setState({ posts }) )
-      axios.get('api/user')
-        .then( res => this.setState({ users: res.datat}) )
+      axios.get('api/users')
+        .then( res => this.setState({ users: res.data}) )
   }
 
 
@@ -87,7 +87,7 @@ class Post extends React.Component {
               <Feed.Label/>
               <Feed.Content>
                 <Feed.Summary>
-                <a>{`${postingUser ? postingUser.nickname : null}`}</a> posted on his page
+                <a>{`${postingUser ? postingUser.name : null}`}</a> posted on his page
                   <Feed.Date>{this.formatDate(post)}</Feed.Date>
                 </Feed.Summary>
                 <Feed.Extra text>
