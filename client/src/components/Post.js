@@ -11,7 +11,6 @@ import {
 } from 'semantic-ui-react';
 import axios from 'axios';
 import FeedPost from './FeedPost';
-import users from '../reducers/users';
 
 class Post extends React.Component {
 
@@ -19,6 +18,16 @@ class Post extends React.Component {
     posts: [],
     users: [],
   }
+
+  constructor(){
+    super();
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+  };
+
+  forceUpdateHandler(){
+    this.forceUpdate()
+  }
+
 
   componentDidMount() {
     axios.get('/api/posts/')
@@ -44,7 +53,7 @@ class Post extends React.Component {
     })
     .catch(error => {
       console.log(error);
-    })    
+    })  
   }
 
   addDislike = (post, dislikes) => {
@@ -72,10 +81,18 @@ class Post extends React.Component {
     })
   }
 
-  refreshLikes = res => this.setState({ likes: res.data.shoes })
+  refreshPost = res => this.setState({ post: res.data.post })
 
   refreshLike = () =>
     this.setState({refreshLike: !this.state.refreshLike})
+
+    componentWillReceiveProps(props) {
+      const { refresh, id } = this.props;
+      if (props.refresh !== refresh) {
+        this.fetchPosts(id)
+          .then(this.refreshPosts)
+      }
+    }  
 
   displayPosts = () => {
     let postingUser = {} 
@@ -95,7 +112,7 @@ class Post extends React.Component {
                 </Feed.Extra>
                 <Feed.Meta>
                   <Feed.Like>
-                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)}  />                     
+                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)} />                     
                     {post.likes}
                   </Feed.Like>
                   <Feed.Like>
