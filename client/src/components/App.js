@@ -11,12 +11,14 @@ import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import Users from './Users';
 import Post from './Post';
+import styled from 'styled-components';
 
 class App extends Component {
   render() {
     return (
       <>
         <NavBar />
+        <Body>
         <Flash />
         <FetchUser>
           <Switch>
@@ -28,10 +30,15 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
+        </Body>
       </>
     );
   }
 }
+
+const Body = styled.div`
+ padding-top: 2.2em;
+`
 
 export default App;
 

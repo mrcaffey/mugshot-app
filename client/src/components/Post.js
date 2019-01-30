@@ -23,6 +23,8 @@ class Post extends React.Component {
   componentDidMount() {
     axios.get('/api/posts/')
       .then( ({ data: posts }) => this.setState({ posts }) )
+      axios.get('api/users')
+        .then( res => this.setState({ users: res.data}) )
   }
 
 
@@ -58,22 +60,42 @@ class Post extends React.Component {
     })    
   }
 
+  formatDate = (post) => {
+    const date = new Date(post.created_at)
+    return (<em>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</em>)
+  }
+
+  setNewLike = like => {
+    this.updatePost({like}).then(res => {
+      this.refreshPost(res)
+      this.refreshLike();
+    })
+  }
+
+  refreshLikes = res => this.setState({ likes: res.data.shoes })
+
+  refreshLike = () =>
+    this.setState({refreshLike: !this.state.refreshLike})
+
   displayPosts = () => {
+    let postingUser = {} 
     return this.state.posts.map(post => {
+      postingUser = this.state.users.find(user => user.id === post.user_id)
         return(
         <Segment>
              <Feed.Event>
               <Feed.Label/>
               <Feed.Content>
                 <Feed.Summary>
-                  {/* {this.displayUser()} */}
+                <a>{`${postingUser ? postingUser.name : null}`}</a> posted on his page
+                  <Feed.Date>{this.formatDate(post)}</Feed.Date>
                 </Feed.Summary>
                 <Feed.Extra text>
                   {post.body}
                 </Feed.Extra>
                 <Feed.Meta>
                   <Feed.Like>
-                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)} />                     
+                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)}  />                     
                     {post.likes}
                   </Feed.Like>
                   <Feed.Like>

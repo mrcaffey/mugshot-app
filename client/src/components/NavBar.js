@@ -57,8 +57,6 @@ const mapStateToProps = state => {
 
 const Background = styled.div`
 background: #07FFA8 !important;
-padding-bottom: 1.5rem;
-padding-top: 1.5rem;
 display: flex;
 flex-direction: row;
 align-items: center;
