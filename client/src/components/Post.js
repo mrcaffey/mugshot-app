@@ -27,7 +27,12 @@ class Post extends React.Component {
         .then( res => this.setState({ users: res.data}) )
   }
 
-
+  //componentDidUpdate(likes){
+  //  if (likes.onClick =! likes)
+   // this.like(likes)
+  //}
+    
+  
   newPost = (post) => {
     this.setState({
       posts: [post, ...this.state.posts]
@@ -44,7 +49,7 @@ class Post extends React.Component {
     })
     .catch(error => {
       console.log(error);
-    })    
+    })
   }
 
   addDislike = (post, dislikes) => {
@@ -65,17 +70,6 @@ class Post extends React.Component {
     return (<em>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</em>)
   }
 
-  setNewLike = like => {
-    this.updatePost({like}).then(res => {
-      this.refreshPost(res)
-      this.refreshLike();
-    })
-  }
-
-  refreshLikes = res => this.setState({ likes: res.data.shoes })
-
-  refreshLike = () =>
-    this.setState({refreshLike: !this.state.refreshLike})
 
   displayPosts = () => {
     let postingUser = {} 
