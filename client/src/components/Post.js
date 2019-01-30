@@ -11,7 +11,6 @@ import {
 } from 'semantic-ui-react';
 import axios from 'axios';
 import FeedPost from './FeedPost';
-import users from '../reducers/users';
 
 class Post extends React.Component {
 
@@ -46,10 +45,12 @@ class Post extends React.Component {
     })
     .then(response => {
       console.log(response);
+      console.log(response.data.likes);
     })
     .catch(error => {
       console.log(error);
-    })
+    }) 
+   // .then(this.refereshPost() //update state some how with the data
   }
 
   addDislike = (post, dislikes) => {
@@ -59,17 +60,22 @@ class Post extends React.Component {
     })
     .then(response => {
       console.log(response);
+      console.log(response.data.dislikes);
     })
     .catch(error => {
       console.log(error);
-    })    
+    }) 
+     // .then(this.refereshPost()) //update state some how with the data
   }
 
   formatDate = (post) => {
     const date = new Date(post.created_at)
     return (<em>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</em>)
   }
+  
+  setNewLikesorDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
 
+  refreshPost = res => this.setState({ posts: res.data.posts })
 
   displayPosts = () => {
     let postingUser = {} 
@@ -89,7 +95,7 @@ class Post extends React.Component {
                 </Feed.Extra>
                 <Feed.Meta>
                   <Feed.Like>
-                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)}  />                     
+                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)}/>                     
                     {post.likes}
                   </Feed.Like>
                   <Feed.Like>
