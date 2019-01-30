@@ -19,16 +19,6 @@ class Post extends React.Component {
     users: [],
   }
 
-  constructor(){
-    super();
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-  };
-
-  forceUpdateHandler(){
-    this.forceUpdate()
-  }
-
-
   componentDidMount() {
     axios.get('/api/posts/')
       .then( ({ data: posts }) => this.setState({ posts }) )
@@ -50,10 +40,12 @@ class Post extends React.Component {
     })
     .then(response => {
       console.log(response);
+      console.log(response.data.likes);
     })
     .catch(error => {
       console.log(error);
-    })  
+    }) 
+   // .then(this.refereshPost() //update state some how with the data
   }
 
   addDislike = (post, dislikes) => {
@@ -63,36 +55,22 @@ class Post extends React.Component {
     })
     .then(response => {
       console.log(response);
+      console.log(response.data.dislikes);
     })
     .catch(error => {
       console.log(error);
-    })    
+    }) 
+     // .then(this.refereshPost()) //update state some how with the data
   }
 
   formatDate = (post) => {
     const date = new Date(post.created_at)
     return (<em>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</em>)
   }
+  
+  setNewLikesorDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
 
-  setNewLike = like => {
-    this.updatePost({like}).then(res => {
-      this.refreshPost(res)
-      this.refreshLike();
-    })
-  }
-
-  refreshPost = res => this.setState({ post: res.data.post })
-
-  refreshLike = () =>
-    this.setState({refreshLike: !this.state.refreshLike})
-
-    componentWillReceiveProps(props) {
-      const { refresh, id } = this.props;
-      if (props.refresh !== refresh) {
-        this.fetchPosts(id)
-          .then(this.refreshPosts)
-      }
-    }  
+  refereshPost = res => this.setState({ posts: res.data.posts })
 
   displayPosts = () => {
     let postingUser = {} 
@@ -112,7 +90,7 @@ class Post extends React.Component {
                 </Feed.Extra>
                 <Feed.Meta>
                   <Feed.Like>
-                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)} />                     
+                    <Icon name='thumbs up' onClick={() => this.addLike(post.id, post.likes)}/>                     
                     {post.likes}
                   </Feed.Like>
                   <Feed.Like>
