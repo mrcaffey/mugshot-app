@@ -68,6 +68,10 @@ class Post extends React.Component {
      // .then(this.refereshPost()) //update state some how with the data
   }
 
+  setNewLikesorDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
+  
+  refereshPost = res => this.setState({ posts: res.data.posts })
+  
   formatDate = (post) => {
     const date = new Date(post.created_at)
     return (<em>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</em>)
