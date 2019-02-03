@@ -61,16 +61,11 @@ class Post extends React.Component {
       console.log(error);
     }) 
   }
-
+  
   setNewLikesorDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
   
   refreshPost = res => this.setState({ posts: res.data.posts })
   
-  formatDate = (post) => {
-    const date = new Date(post.created_at)
-    return (<em>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</em>)
-  }
-
   componentWillReceiveProps(props) {
     const { refresh, id } = this.props;
     if (props.refresh !== refresh) {
@@ -78,6 +73,12 @@ class Post extends React.Component {
         .then(this.refreshPost)
     }
   }
+  
+  formatDate = (post) => {
+    const date = new Date(post.created_at)
+    return (<em>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</em>)
+  }
+
 
   displayPosts = () => {
     let postingUser = {} 
