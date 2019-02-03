@@ -24,13 +24,7 @@ class Post extends React.Component {
       .then( ({ data: posts }) => this.setState({ posts }) )
       axios.get('api/users')
         .then( res => this.setState({ users: res.data}) )
-  }
-
-  //componentDidUpdate(likes){
-  //  if (likes.onClick =! likes)
-   // this.like(likes)
-  //}
-    
+  } 
   
   newPost = (post) => {
     this.setState({
@@ -46,11 +40,11 @@ class Post extends React.Component {
     .then(response => {
       console.log(response);
       console.log(response.data.likes);
+      this.refreshPost(response.data)
     })
     .catch(error => {
       console.log(error);
     }) 
-    .then(this.refreshPost())
   }
 
   addDislike = (post, dislikes) => {
@@ -61,11 +55,11 @@ class Post extends React.Component {
     .then(response => {
       console.log(response);
       console.log(response.data.dislikes);
+      this.refreshPost(response.data)
     })
     .catch(error => {
       console.log(error);
     }) 
-     .then(this.refreshPost()) 
   }
 
   setNewLikesorDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
