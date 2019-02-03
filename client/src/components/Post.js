@@ -13,17 +13,17 @@ import axios from 'axios';
 import FeedPost from './FeedPost';
 
 class Post extends React.Component {
-
+  
   state = {
     posts: [],
     users: [],
   }
-
+  
   componentDidMount() {
     axios.get('/api/posts/')
-      .then( ({ data: posts }) => this.setState({ posts }) )
-      axios.get('api/users')
-        .then( res => this.setState({ users: res.data}) )
+    .then( ({ data: posts }) => this.setState({ posts }) )
+    axios.get('api/users')
+    .then( res => this.setState({ users: res.data}) )
   } 
   
   newPost = (post) => {
@@ -31,7 +31,7 @@ class Post extends React.Component {
       posts: [post, ...this.state.posts]
     })
   }
-
+  
   addLike = (post, likes) => {
     const like = likes + 1;
     axios.put(`/api/posts/${post}`, {
@@ -70,10 +70,14 @@ class Post extends React.Component {
     const date = new Date(post.created_at)
     return (<em>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</em>)
   }
-  
-  setNewLikesorDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
 
-  refreshPost = res => this.setState({ posts: res.data.posts })
+  componentWillReceiveProps(props) {
+    const { refresh, id } = this.props;
+    if (props.refresh !== refresh) {
+      this.addLike(id)
+        .then(this.refreshPost)
+    }
+  }
 
   displayPosts = () => {
     let postingUser = {} 
