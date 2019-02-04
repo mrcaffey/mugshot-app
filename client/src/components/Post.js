@@ -24,6 +24,8 @@ class Post extends React.Component {
     .then( ({ data: posts }) => this.setState({ posts }) )
     axios.get('api/users')
     .then( res => this.setState({ users: res.data}) )
+    this.addDislike()
+    this.addLike()
   } 
   
   newPost = (post) => {
@@ -39,7 +41,7 @@ class Post extends React.Component {
     })
     .then(response => {
       console.log(response);
-      console.log(response.data.likes);
+      var props = console.log(response.data.likes);
       this.refreshPost(response.data)
     })
     .catch(error => {
@@ -73,7 +75,7 @@ class Post extends React.Component {
         .then(this.refreshPost)
     }
   }
-  
+
   formatDate = (post) => {
     const date = new Date(post.created_at)
     return (<em>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</em>)
