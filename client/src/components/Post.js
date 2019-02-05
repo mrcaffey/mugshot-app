@@ -24,8 +24,10 @@ class Post extends React.Component {
     .then( ({ data: posts }) => this.setState({ posts }) )
     axios.get('api/users')
     .then( res => this.setState({ users: res.data}) )
-    // this.addDislike(this.props.id).then(this.refreshPost)
-    // this.addLike().then(this.refreshPost)
+    // this.addDislike()
+    //   .then(this.refreshPost)
+    // this.addLike()
+    //   .then(this.refreshPost)
   } 
   
   newPost = (post) => {
@@ -42,7 +44,7 @@ class Post extends React.Component {
     .then(response => {
       console.log(response);
       console.log(response.data.likes);
-      this.refreshPost(response.data)
+      this.refreshPost(response.data);
     })
     .catch(error => {
       console.log(error);
@@ -64,17 +66,11 @@ class Post extends React.Component {
     }) 
   }
   
-  setNewLikesorDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
-  
-  refreshPost = res => this.setState({ posts: res.data.posts })
-  
-  componentWillReceiveProps(props) {
-    const { refresh, id } = this.props;
-    if (props.refresh !== refresh) {
-      this.addLike(id)
-        .then(this.refreshPost)
-    }
+  setNewLikesorDislikes = likeOrDislike => {
+    this.updatePosts({likeOrDislike}).then(this.refreshPost)
   }
+  
+  refreshPost = () => this.setState({ refreshPost: !this.refreshPost })
 
   formatDate = (post) => {
     const date = new Date(post.created_at)
