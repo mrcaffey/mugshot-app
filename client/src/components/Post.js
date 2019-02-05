@@ -24,8 +24,8 @@ class Post extends React.Component {
     .then( ({ data: posts }) => this.setState({ posts }) )
     axios.get('api/users')
     .then( res => this.setState({ users: res.data}) )
-    this.addDislike()
-    this.addLike()
+    this.addDislike().then(this.refreshPost)
+    this.addLike().then(this.refreshPost)
   } 
   
   newPost = (post) => {
@@ -41,7 +41,7 @@ class Post extends React.Component {
     })
     .then(response => {
       console.log(response);
-      var props = console.log(response.data.likes);
+      console.log(response.data.likes);
       this.refreshPost(response.data)
     })
     .catch(error => {
