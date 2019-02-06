@@ -22,6 +22,9 @@ class NavBar extends Component {
         <Link to="/users">
           <Menu.Item name="Users" />
         </Link>
+        <Link to="/imageUpload">
+          <Menu.Item name="Image Upload" />
+        </Link>
         </Menu.Menu>
       );
     }

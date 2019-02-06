@@ -12,6 +12,7 @@ import FetchUser from './FetchUser';
 import Users from './Users';
 import Post from './Post';
 import styled from 'styled-components';
+import ImageUpload from './ImageUpload';
 
 class App extends Component {
   render() {
@@ -26,7 +27,8 @@ class App extends Component {
             <AuthRoute exact path="/login" component={Login} />
             <AuthRoute exact path="/register" component={Register} />
             <Route exact path="/users" component={Users} />
-            <Route exact paath="/post" component={Post} />
+            <Route exact path="/post" component={Post} />
+            <Route exact path="/imageUpload" component={ImageUpload} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
