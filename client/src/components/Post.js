@@ -44,7 +44,6 @@ class Post extends React.Component {
     .then(response => {
       console.log(response);
       console.log(response.data.likes);
-      this.refreshPost(response.data);
     })
     .catch(error => {
       console.log(error);
@@ -59,7 +58,6 @@ class Post extends React.Component {
     .then(response => {
       console.log(response);
       console.log(response.data.dislikes);
-      this.refreshPost(response.data)
     })
     .catch(error => {
       console.log(error);
