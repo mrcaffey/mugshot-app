@@ -81,7 +81,7 @@ class Post extends React.Component {
     return this.state.posts.map(post => {
       postingUser = this.state.users.find(user => user.id === post.user_id)
         return(
-        <Segment>
+        <Segment key={post.id}>
              <Feed.Event>
               <Feed.Label/>
               <Feed.Content>
