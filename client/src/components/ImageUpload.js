@@ -7,6 +7,7 @@ class ImageUpload extends React.Component {
     selectedFile: null
   }
   fileSelectedHandler = event => {
+    console.log(event.target.files[0])
     this.setState({
       selectedFile: event.target.files[0]
     })
@@ -16,9 +17,7 @@ class ImageUpload extends React.Component {
   fileUploadHandler = () => {
     const mugshot = new FormData();
     mugshot.append('image', this.state.selectedFile, this.state.selectedFile.name)
-    axios.post(`api/users/`/*${currentUser.id}*/, mugshot, { onUploadProgress: progressEvent => {
-      document.getElementById("progress").innerHTML = 'upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%'
-    }})
+    axios.post(`api/users/1`, mugshot)
       .then(res => {
         console.log(res)
       });

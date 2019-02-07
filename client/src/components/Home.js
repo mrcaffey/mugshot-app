@@ -26,7 +26,7 @@ class Home extends Component {
   }
   // Interval must be double of Animation length
 
-  componentWillUnomount(){
+  componentWillUnmount(){
     clearInterval(this.interval)
   }
 
