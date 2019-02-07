@@ -12,10 +12,11 @@ class ImageUpload extends React.Component {
     })
   }
 
+  //need to learn how to get the current user for this to work
   fileUploadHandler = () => {
     const mugshot = new FormData();
     mugshot.append('image', this.state.selectedFile, this.state.selectedFile.name)
-    axios.post("", mugshot, { onUploadProgress: progressEvent => {
+    axios.post(`api/users/`/*${currentUser.id}*/, mugshot, { onUploadProgress: progressEvent => {
       document.getElementById("progress").innerHTML = 'upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%'
     }})
       .then(res => {
