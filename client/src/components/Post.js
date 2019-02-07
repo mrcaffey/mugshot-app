@@ -50,7 +50,9 @@ class Post extends React.Component {
     .catch(error => {
       console.log(error);
     }) 
-   // .then(this.refereshPost() //update state some how with the data
+      .then(response => {
+        this.setNewLikesOrDislikes(response.data.likes)
+      })//update state some how with the data
   }
 
   addDislike = (post, dislikes) => {
@@ -65,19 +67,19 @@ class Post extends React.Component {
     .catch(error => {
       console.log(error);
     }) 
-     // .then(this.refereshPost()) //update state some how with the data
+     // .then(this.refreshPost()) //update state some how with the data
   }
 
-  setNewLikesorDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
+  setNewLikesOrDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
   
-  refereshPost = res => this.setState({ posts: res.data.posts })
+  refreshPost = res => this.setState({ posts: res.data.posts })
   
   formatDate = (post) => {
     const date = new Date(post.created_at)
     return (<em>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</em>)
   }
   
-  setNewLikesorDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
+  setNewLikesOrDislikes = likeOrDislike => this.updatePosts({likeOrDislike}).then(this.refreshPost)
 
   refreshPost = res => this.setState({ posts: res.data.posts })
 
