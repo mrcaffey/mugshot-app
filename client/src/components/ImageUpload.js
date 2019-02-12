@@ -17,7 +17,9 @@ class ImageUpload extends React.Component {
   fileUploadHandler = () => {
     const mugshot = new FormData();
     mugshot.append('image', this.state.selectedFile, this.state.selectedFile.name)
-    axios.put(`/api/users/11`, mugshot)
+    axios.put(`/api/users/11`, {
+      avatar: mugshot
+    })
       .then(res => {
         console.log(res)
       });

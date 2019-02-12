@@ -9,6 +9,14 @@ class Api::UsersController < ApplicationController
     render json: @user
   end
 
+  def update
+    if User.find(params[:id]).update(user_params)
+      render json: User.find(params[:id])
+    else
+      render json: User.errors, status: 422
+    end
+  end
+
   def create
     post = User.new(user_params)
     if user.save
