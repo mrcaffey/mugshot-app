@@ -8,6 +8,7 @@ import {
   Segment,
   Feed,
   Divider,
+  Image,
 } from 'semantic-ui-react';
 import axios from 'axios';
 import FeedPost from './FeedPost';
@@ -91,6 +92,7 @@ class Post extends React.Component {
              <Feed.Event>
               <Feed.Label/>
               <Feed.Content>
+        {/*<Image src='Images/Avatars/${postingUser.id' */}
                 <Feed.Summary>
                 <a>{`${postingUser ? postingUser.name : null}`}</a> posted on his page
                   <Feed.Date>{this.formatDate(post)}</Feed.Date>
