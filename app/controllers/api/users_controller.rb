@@ -22,6 +22,14 @@ class Api::UsersController < ApplicationController
       User.find(params[:id]).destroy
     end
 
+    def update
+      if User.find(params[:id]).update(user_params)
+        render json: User.find(params[:id])
+      else 
+        render json: User.errors, status: 422
+      end
+    end
+
   private
   def set_user
     @user = User.find(params[:id])

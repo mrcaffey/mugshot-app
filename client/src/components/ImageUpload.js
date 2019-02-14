@@ -17,8 +17,9 @@ class ImageUpload extends React.Component {
   fileUploadHandler = () => {
     const mugshot = new FormData();
     mugshot.append('image', this.state.selectedFile, this.state.selectedFile.name)
-    axios.post(`api/users/1`, mugshot)
+    axios.put(`api/users/1`, mugshot )
       .then(res => {
+        debugger
         console.log(res)
       });
   }
@@ -27,7 +28,7 @@ class ImageUpload extends React.Component {
     return (
       <Body>
       <input type="file" onChange={this.fileSelectedHandler} />
-      <button onClick={this.fileUploadHander}>Upload</button>
+      <button onClick={this.fileUploadHandler}>Upload</button>
       <p id="progress"></p>
       </Body>
     )
