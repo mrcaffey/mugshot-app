@@ -7,6 +7,13 @@ class ImageUpload extends React.Component {
     selectedFile: null,
     avatar: null
   }
+
+  handleFileUpload = e => {
+    this.setState({
+      avatar: e.target.files[0],
+    });
+  };
+  
   fileSelectedHandler = event => {
     console.log(event.target.files[0])
     this.setState({
@@ -29,6 +36,10 @@ class ImageUpload extends React.Component {
   fileUploadHandler1 = () => {
     let data = new FormData();
     data.append('avatar', this.avatar)
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/users`, {
+      method: 'POST',
+      body: data,
+    })
   }
 
   render() {
