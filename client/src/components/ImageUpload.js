@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 class ImageUpload extends React.Component {
   state = {
-    selectedFile: null
+    selectedFile: null,
+    avatar: null
   }
   fileSelectedHandler = event => {
     console.log(event.target.files[0])
@@ -23,6 +24,11 @@ class ImageUpload extends React.Component {
       .then(res => {
         console.log(res)
       });
+  }
+
+  fileUploadHandler1 = () => {
+    let data = new FormData();
+    data.append('avatar', this.avatar)
   }
 
   render() {
