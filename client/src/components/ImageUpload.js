@@ -8,7 +8,7 @@ class ImageUpload extends React.Component {
     avatar: null
   }
 
-  handleFileUpload = e => {
+  fileSelectedHandler1 = e => {
     this.setState({
       avatar: e.target.files[0],
     });
@@ -45,8 +45,8 @@ class ImageUpload extends React.Component {
   render() {
     return (
       <Body>
-      <input type="file" onChange={this.fileSelectedHandler} />
-      <button onClick={this.fileUploadHandler}>Upload</button>
+      <input type="file" onChange={this.fileSelectedHandler1} />
+      <button onClick={this.fileUploadHandler1}>Upload</button>
       <p id="progress"></p>
       </Body>
     )
