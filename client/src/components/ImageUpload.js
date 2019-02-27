@@ -38,7 +38,7 @@ class ImageUpload extends React.Component {
     let avatar = this.state.avatar
     let data = new FormData();  
     data.append('avatar', avatar)
-    fetch(`/api/users/11`, {
+    fetch(`/api/user/11`, {
       method: 'PUT',
       body: data,
     })
