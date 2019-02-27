@@ -42,6 +42,16 @@ class ImageUpload extends React.Component {
       method: 'PUT',
       body: data,
     })
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        throw response
+      }
+    })
+    .then(JSONResponse => {
+      localStorage.setItem('jwt', JSONResponse.jwt)
+    })
   }
 
   render() {
