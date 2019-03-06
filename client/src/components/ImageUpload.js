@@ -5,7 +5,8 @@ import styled from 'styled-components';
 class ImageUpload extends React.Component {
   state = {
     selectedFile: null,
-    avatar: null
+    avatar: null,
+    user: null,
   }
 
   fileSelectedHandler1 = event => {
@@ -36,7 +37,9 @@ class ImageUpload extends React.Component {
 
   fileUploadHandler1 = () => {
     let avatar = this.state.avatar
+    let user = this.props.user.user
     let data = new FormData();  
+    data.append(this.props.user.user, user)
     data.append('avatar', avatar)
     fetch(`/api/users/11`, {
       method: 'PUT',

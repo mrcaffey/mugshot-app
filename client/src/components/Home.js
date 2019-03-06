@@ -58,7 +58,7 @@ const pulse = keyframes`
  
 const animation = props =>
   css`
-    ${pulse} ${props.animationLength} 1s infinite alternate; 
+    ${pulse} ${props.animationLength} .5s infinite alternate; 
   `
 
 // Animation length must be half of set interval
