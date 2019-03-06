@@ -22,7 +22,7 @@ class Home extends Component {
       if(this.state.i >= this.state.photos.length){
         this.setState({i: 0})
       }
-    }, 2000)
+    }, 1000)
   }
   // Interval must be double of Animation length
 
